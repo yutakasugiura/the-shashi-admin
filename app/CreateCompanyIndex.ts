@@ -19,7 +19,7 @@ class CreateCompanyIndex {
             console.log(reset + '==========');
             console.log('Completed: Create company index data');
 
-        } catch(err) {
+        } catch (err) {
             // TODO: output to error log file
             console.log(red + 'There is no company xlsx file');
         }

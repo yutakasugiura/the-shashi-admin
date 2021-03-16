@@ -1,3 +1,5 @@
+import { ReadFileData } from '../Domain/Utility/ReadFileData';
+
 /**
  * Read All IPO Companies in Japan from Edinet code list
  *  - https://disclosure.edinet-fsa.go.jp/
@@ -15,16 +17,22 @@ class ReadEdinetCodeList {
         const green = '\u001b[32m';
         const reset = '\u001b[0m';
 
-        try {
-            // 1. read company lists for json
+        // try {
+        // 1. read edinet code list from csv
+        const filePath = './data/edinet/EdinetcodeDlInfo.csv'
+        const characterCode = 'SHIFT-JIS';
 
-            console.log(reset + '==========');
-            console.log('Completed: Create company index data');
+        const readFileData = new ReadFileData();
+        readFileData.readCsv(filePath, characterCode);
 
-        } catch(err) {
-            // TODO: output to error log file
-            console.log(red + 'There is no company xlsx file');
-        }
+
+        console.log(reset + '==========');
+        console.log('Completed: Create company index data');
+
+        // } catch (err) {
+        //     // TODO: output to error log file
+        //     console.log(red + 'There is no company Csvx file');
+        // }
     }
 }
 
