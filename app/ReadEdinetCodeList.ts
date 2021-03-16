@@ -1,9 +1,11 @@
 /**
- * Create Company Lists for Index Page
- *  - %tsc app/className.ts
- *  - %node app/className.js
+ * Read All IPO Companies in Japan from Edinet code list
+ *  - https://disclosure.edinet-fsa.go.jp/
+ * 
+ * Execute Command 
+ *  - % ts-node app/className.ts
  */
-class CreateCompanyIndex {
+class ReadEdinetCodeList {
     constructor() {
 
         // setting of console color
@@ -26,4 +28,4 @@ class CreateCompanyIndex {
     }
 }
 
-new CreateCompanyIndex();
+new ReadEdinetCodeList();
