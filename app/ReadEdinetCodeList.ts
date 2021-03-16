@@ -1,4 +1,6 @@
 import { ReadFileData } from '../Domain/Utility/ReadFileData';
+import { ReadEdinetCodeListService } from '../Domain/ReadEdinetCodeListService';
+import { CreateJsonFile } from '../Domain/Utility/CreateJsonFile';
 
 /**
  * Read All IPO Companies in Japan from Edinet code list
@@ -20,11 +22,17 @@ class ReadEdinetCodeList {
         // try {
         // 1. read edinet code list from csv
         const filePath = './data/edinet/EdinetcodeDlInfo.csv'
-        const characterCode = 'SHIFT-JIS';
 
         const readFileData = new ReadFileData();
-        readFileData.readCsv(filePath, characterCode);
+        const csv = readFileData.readCsv(filePath, 'UTF-8');
 
+        // 2. data creasing
+        const readEdinetCodeListService = new ReadEdinetCodeListService();
+        const data = readEdinetCodeListService.execute(csv);
+
+        // 3. convert object to json
+        const createJsonFile = new CreateJsonFile();
+        createJsonFile.execute(data, 'EdinetCodeList');
 
         console.log(reset + '==========');
         console.log('Completed: Create company index data');

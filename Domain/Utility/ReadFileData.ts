@@ -1,5 +1,8 @@
 import * as fs from 'fs';
+import * as parse from 'csv-parse';
+import * as csv from 'csv';
 import * as iconv from 'iconv-lite';
+import * as csvParse from 'csv-parse/lib/sync';
 
 /**
  * Common class to read file data (csv etc...)
@@ -7,17 +10,12 @@ import * as iconv from 'iconv-lite';
  * return @any[]
  */
 export class ReadFileData {
-    public readCsv(targetFilePath: string, characterCode: string): any[] {
-        // set up for read csv
+    public readCsv(targetFilePath: string, characterCode: string): any {
 
-        const csv = fs.createReadStream(targetFilePath)
-            .pipe(iconv.decodeStream(characterCode))
-            .pipe(iconv.encodeStream('utf-8'))
-            .pipe(process.stdout);
-        console.log(csv);
+        const csvSync = require('csv-parse/lib/sync');
+        const data = fs.readFileSync(targetFilePath, { encoding: characterCode });
 
-        return [];
+        return csvSync(data);
 
     }
-
 }
