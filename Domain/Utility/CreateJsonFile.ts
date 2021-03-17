@@ -7,7 +7,7 @@ import * as fs from 'fs';
  */
 export class CreateJsonFile {
     public execute(formattedData: object, fileName: string | number): void {
-        const filePath: string = './data/output/';
+        const filePath: string = './data/json/';
 
         fs.writeFile(filePath + fileName + '.json', JSON.stringify(formattedData, undefined, 2), (err) => {
             if (err) throw err;
