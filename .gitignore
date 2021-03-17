@@ -4,5 +4,6 @@ config/**/*.js
 data/**/*.js
 node_modules/*
 data/xbrl/*
+!*.py
 data/taxonomy/*
 .DS_Store
