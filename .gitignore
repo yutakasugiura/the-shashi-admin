@@ -3,4 +3,6 @@ Domain/**/*.js
 config/**/*.js
 data/**/*.js
 node_modules/*
+data/xbrl/*
+data/taxonomy/*
 .DS_Store

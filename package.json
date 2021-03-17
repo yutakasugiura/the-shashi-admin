@@ -10,8 +10,13 @@
     "csvtojson": "^2.0.10",
     "dayjs": "^1.10.4",
     "iconv-lite": "^0.6.2",
+    "parse-xbrl": "^1.1.5",
+    "request": "^2.88.2",
     "ts-node": "^9.1.1",
-    "xlsx": "^0.16.9"
+    "xlsx": "^0.16.9",
+    "xmldom": "^0.5.0",
+    "xmljson": "^0.2.0",
+    "xpath": "0.0.32"
   },
   "devDependencies": {
     "@types/node": "^12.20.4",
