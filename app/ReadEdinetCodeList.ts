@@ -38,7 +38,9 @@ class ReadEdinetCodeList {
             const createJsonFile = new CreateJsonFile();
             createJsonFile.execute(data, 'EdinetCodeList');
 
+            // 4. display result for console
             console.log(ConsoleConfig.green + 'Completed: Create company index data');
+            console.log(ConsoleConfig.reset + 'Result: Get ' + data.length + ' code lists');
             console.log(ConsoleConfig.reset + 'Saved File: ../data/json/EditnetCodeList.json')
 
         } catch (err) {
