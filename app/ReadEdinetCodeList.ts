@@ -2,6 +2,7 @@ import { ReadFileData } from '../Domain/Utility/ReadFileData';
 import { ReadEdinetCodeListService } from '../Domain/ReadEdinetCodeListService';
 import { CreateJsonFile } from '../Domain/Utility/CreateJsonFile';
 import ConsoleConfig from '../config/ConsoleConfig';
+import { ImportCsvFromHttps } from '../Domain/ImportCsvFromHttps';
 
 /**
  * Read All IPO Companies in Japan from Edinet code list
