@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-4": {
+            "myapp\\": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^2.2"
+    }
+}
