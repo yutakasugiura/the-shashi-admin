@@ -5,14 +5,18 @@ namespace Auth;
 use Auth\Test\AutoloadTest;
 use Dotenv\Dotenv;
 
+require './vendor/autoload.php';
+
 class GeneralTest
 {
+    /**
+     * Execute Test
+     *
+     * @return void
+     */
     public function execute(): void
-    {
-        require './vendor/autoload.php';
-        
+    {   
         $this->isClassLoaded();
-
         $this->isEnvLoaded();
 
     }
@@ -26,7 +30,7 @@ class GeneralTest
         $testMessage = $autoloadTest->execute();
         
         if ($testMessage === 'SUCCESS to Autoload') {
-            echo 'SUCCESS to Autoload';
+            echo 'SUCCESS to Class File Autoload';
             return true;
         }
         return false;
@@ -35,22 +39,21 @@ class GeneralTest
     private function isEnvLoaded(): bool
     {
         $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
 
-        var_dump($dotenv->load());
+        $result = $_ENV['ENV_LOADING_TEST'];
+
+        if ($result === 'Success_to_load_env_file') {
+            echo 'SUCCESS to ENV File Autoload';
+            return true;
+        }
         return false;
     }
 }
 
+/**
+ * Execute Command
+ *  - php GeneralTest.php
+ */
 $generalTest = new GeneralTest();
 $generalTest->execute();
-    //初期化
-
-    //.envの保存場所指定（カレントに設定）
-    // $dotenv = new Auth\Dotenv\Dotenv(__DIR__);
-
-    // $dotenv->load();
-
-    //利用
-    //値を取得
-    // $name = getenv('NAME');
-    // echo $name;
