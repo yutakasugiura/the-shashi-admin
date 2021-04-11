@@ -42,10 +42,6 @@ Class AuthLogin
      */
     private function isAuthUser(): bool
     {
-        require_once 'Config.php';
-
-        $sessionId = Config::setConfigDirectory(__DIR__ . '/config');
-        var_dump(Config::get('session_id'));
         var_dump('===========\n');
 
         // $sessionId = (string) $_COOKIE['_authS'];
