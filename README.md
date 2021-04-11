@@ -24,6 +24,7 @@
 ### Directory
 ```
 root/
+ ├ Auth/ //Auth0 検証環境（Non Framework by php7.x）
  ├ App/ //実行ファイル格納（Console Command）
  ├ Domain/ // ユースケースの実行ロジック
  ├ config/ // グローバル設定
