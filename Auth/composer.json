@@ -2,7 +2,10 @@
     "autoload": {
         "psr-4": {
             "Auth\\": "."
-        }
+        },
+        "classmap": [
+            "."
+        ]
     },
     "require": {
         "monolog/monolog": "^2.2",

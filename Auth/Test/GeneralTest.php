@@ -1,11 +1,11 @@
 <?php
 
-namespace Auth;
+namespace Auth\Test;
 
 use Auth\Test\AutoloadTest;
 use Dotenv\Dotenv;
 
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 
 class GeneralTest
 {
@@ -18,7 +18,6 @@ class GeneralTest
     {   
         $this->isClassLoaded();
         $this->isEnvLoaded();
-
     }
 
     /**
@@ -38,7 +37,7 @@ class GeneralTest
 
     private function isEnvLoaded(): bool
     {
-        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv = Dotenv::createImmutable('../');
         $dotenv->load();
 
         $result = $_ENV['ENV_LOADING_TEST'];

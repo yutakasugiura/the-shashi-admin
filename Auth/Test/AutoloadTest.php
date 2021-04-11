@@ -2,15 +2,12 @@
 
 namespace Auth\Test;
 
-class AutoloadTest
+use PHPUnit\Framework\TestCase;
+
+final class SampleTest extends TestCase
 {
-    /**
-     * Test Execute
-     *
-     * @return string
-     */
-    public function execute(): string
+    public function testSample(): void
     {
-        return 'SUCCESS to Autoload';
+        $this->assertTrue(True);
     }
 }
