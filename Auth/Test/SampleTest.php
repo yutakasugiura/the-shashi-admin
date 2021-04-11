@@ -2,15 +2,24 @@
 
 namespace Auth\Test;
 
-class AutoloadTest
+use PHPUnit\Framework\TestCase;
+
+/**
+ * Execute Command
+ *  - All Test: vendor/bin/phpunit
+ *  - Single Test: vendor/bin/phpunit Test/SampleTest.php
+ *     - should Define Dir & .php
+ */
+final class SampleTest extends TestCase
 {
     /**
-     * Test Execute
+     * Execute Sample Test
+     *  - is php unit active?
      *
-     * @return string
+     * @return void
      */
-    public function execute(): string
+    public function testSample(): void
     {
-        return 'SUCCESS to Autoload';
+        $this->assertTrue(True);
     }
 }

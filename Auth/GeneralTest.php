@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth\Test;
+namespace Auth;
 
 use Auth\Test\AutoloadTest;
 use Dotenv\Dotenv;
