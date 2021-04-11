@@ -1,7 +1,32 @@
 <?php
-  require __DIR__ . '/vendor/autoload.php';
-  use Auth0\SDK\Auth0;
-  setcookie("_authS", "sessionId=sD7^2as__*s&sajkhAx83", time()+60*60*24);
+
+require 'vendor/autoload.php';
+use Auth0\SDK\Auth0;
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable('.');
+$dotenv->load();
+
+$auth0 = new Auth0([
+  'domain'        => $_ENV['AUTH0_DOMAIN'],
+  'client_id'     => $_ENV['AUTH0_CLIENT_ID'],
+  'client_secret' => $_ENV['AUTH0_CLIENT_SECRET'],
+  'redirect_uri'  => $_ENV['AUTH0_CALLBACK_URL'],
+  'scope'         => 'openid profile email',
+]);
+
+$userInfo = $auth0->getUser();
+
+if (!$userInfo) {
+    // We have no user info
+    // See below for how to add a login link
+} else {
+    $isLogInSucceed = 'SUCCESS to Log In';
+    $userName = $userInfo['name'];
+    // User is authenticated
+    // See below for how to display user information
+}
+echo $isLogInSucceed ?? 'Not Logged In';
 ?>
 
 <!DOCTYPE html>
@@ -9,14 +34,8 @@
 <head>
 <meta charset="UTF-8">
 <div class="loginform">
-  <form action="auth.php" method="post">
-    <ul>
-    <li>name <input name="name" type="text" autocomplete="off"></li>
-    <li>pass <input name="password" type="text" autocomplete="off"></li>
-    <li><input type="submit"></li>
-    </ul>
-  </form>
-  <?php echo $message ?? 'msg' ?>
+  <div><a href="login.php">Auth0 Log In</a></div>
+  <?php echo $userName ?? '' ?>
 </div>
 </body>
 </html>
