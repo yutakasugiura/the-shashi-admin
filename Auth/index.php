@@ -1,4 +1,6 @@
 <?php
+  require __DIR__ . '/vendor/autoload.php';
+  use Auth0\SDK\Auth0;
   setcookie("_authS", "sessionId=sD7^2as__*s&sajkhAx83", time()+60*60*24);
 ?>
 

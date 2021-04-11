@@ -1,10 +1,12 @@
 <?php
 namespace Auth;
 
+use Config;
 use Exception;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Auth\Exception\ValidationException;
+use Auth0\SDK\Auth0;
 
 Class AuthLogin
 {
@@ -24,20 +26,31 @@ Class AuthLogin
      */
     public function execute()
     {
-        /**
-         * $_REQUEST : array
-         *  ['name' => 'foo', 'password' => 'bas']
-         */
-        // $_REQUEST;
-
-        
-
+        $this->isAuthUser();
         try {
             $this->validateValue();
         } catch (Exception $e) {
             $message = $e->getMessage(); // send error message
             return include('error/403.php');
         }
+    }
+
+    /**
+     * CheckSessionId
+     *
+     * @return boolean
+     */
+    private function isAuthUser(): bool
+    {
+        require_once 'Config.php';
+
+        $sessionId = Config::setConfigDirectory(__DIR__ . '/config');
+        var_dump(Config::get('session_id'));
+        var_dump('===========\n');
+
+        // $sessionId = (string) $_COOKIE['_authS'];
+        return true;
+       
     }
 
     /**
