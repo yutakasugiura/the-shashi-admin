@@ -14,4 +14,8 @@ $auth0 = new Auth0([
     'scope'         => 'openid profile email',
   ]);
 
-  $auth0->login();
+  $auth0->logout();
+  // $return_to = 'http://' . $_SERVER['HTTP_HOST'];
+  // $logout_url = sprintf('http://%s/v2/logout?client_id=%s&returnTo=%s', 'the-shashi.jp.auth0.com', '6yncO3OyX8fnIBCdfatfJuK3NkR3UKR2', $return_to);
+  header('Location: ' . 'http://localhost:3000/');
+  die();

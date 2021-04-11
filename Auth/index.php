@@ -36,6 +36,11 @@ echo $isLogInSucceed ?? 'Not Logged In';
 <div class="loginform">
   <div><a href="login.php">Auth0 Log In</a></div>
   <?php echo $userName ?? '' ?>
+  <?php if(!$userInfo): ?>
+    Log Out
+  <?php else: ?>
+  <a href="/logout.php">Logout</a>
+  <?php endif ?>
 </div>
 </body>
 </html>
