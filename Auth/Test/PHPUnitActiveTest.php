@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  *  - Single Test: vendor/bin/phpunit Test/SampleTest.php
  *     - should Define Dir & .php
  */
-final class SampleTest extends TestCase
+final class PHPUnitActiveTest extends TestCase
 {
     /**
      * Execute Sample Test
@@ -18,7 +18,7 @@ final class SampleTest extends TestCase
      *
      * @return void
      */
-    public function testSample(): void
+    public function testIsPHPUnitActive(): void
     {
         $this->assertTrue(True);
     }

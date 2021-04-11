@@ -1,8 +1,8 @@
 ### Set up for Auth0 by php7.x
-```
  - What?
  - フレームワークを使用しないphp7系で、Auth0の動作検証を行う環境
- - 主な使用ライブラリ
+```
+ - use main library
     - phpunit
     - auth0-php
     - dotenv
