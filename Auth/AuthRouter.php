@@ -1,0 +1,25 @@
+<?php
+
+namespace Auth;
+
+require 'vendor/autoload.php';
+
+use Auth\UseCase\Auth0Setting;
+
+class AuthRouter
+{
+    public function handle(): void
+    {
+        $auth0 = new Auth0Setting();
+        $route = $_POST['routerStatus'];
+
+        if ($route === 'login') {
+            $auth0->login();
+        } elseif ($route === 'logout') {
+            $auth0->logout();
+        }
+    }
+}
+
+$router = new AuthRouter();
+$router->handle();

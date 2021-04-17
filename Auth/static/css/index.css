@@ -1,0 +1,37 @@
+.header {
+    padding: 10px;
+    text-align: center;
+    color: #555;
+  }
+  .header-subtitle {
+    font-size: 13px;
+  }
+  .header-login {
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    text-align: center;
+    color: #fff;
+    background: rgba(165, 205, 228);
+    font-weight: bold;
+  }
+  .header-logout {
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    text-align: center;
+    color: #fff;
+    background: rgb(228, 165, 165);
+    font-weight: bold;
+  }
+  .content {
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .content-login {
+    text-align: center;
+  }
+  .content-login a{
+    color: #333;
+  }
+  

@@ -1,46 +1,67 @@
 <?php
 
+namespace Auth;
+
+use Auth\UseCase\Auth0Setting;
+
 require 'vendor/autoload.php';
-use Auth0\SDK\Auth0;
-use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable('.');
-$dotenv->load();
-
-$auth0 = new Auth0([
-  'domain'        => $_ENV['AUTH0_DOMAIN'],
-  'client_id'     => $_ENV['AUTH0_CLIENT_ID'],
-  'client_secret' => $_ENV['AUTH0_CLIENT_SECRET'],
-  'redirect_uri'  => $_ENV['AUTH0_CALLBACK_URL'],
-  'scope'         => 'openid profile email',
-]);
-
-$userInfo = $auth0->getUser();
-
-if (!$userInfo) {
-    // We have no user info
-    // See below for how to add a login link
-} else {
-    $isLogInSucceed = 'SUCCESS to Log In';
-    $userName = $userInfo['name'];
-    // User is authenticated
-    // See below for how to display user information
+class Index
+{
+  /**
+   * 初回アクセス時にログイン判定を実施
+   *
+   * @return void
+   */
+  public function getUser(): ?array
+  {
+    $auth0Setting = new Auth0Setting();
+    return $auth0Setting->getUser() ?? null;
+  }
 }
-echo $isLogInSucceed ?? 'Not Logged In';
+$index = new Index();
+$user = $index->getUser();
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<div class="loginform">
-  <div><a href="login.php">Auth0 Log In</a></div>
-  <?php echo $userName ?? '' ?>
-  <?php if(!$userInfo): ?>
-    Log Out
+<link rel="stylesheet" href="/static/css/index.css">
+<body>
+  <div class="header">
+    <h1>Auth0 Login Form</h1>
+    <div class="header-subtitle">ノンフレームワークphp(7.x)によるAuth0テスト環境</div>
+  </div>
+  <div class="content">
+  <?php if(is_null($user)): ?>
+    <div class="header-logout">
+        ログアウト
+    </div>
   <?php else: ?>
-  <a href="/logout.php">Logout</a>
+    <div class="header-login">
+      <div>ログイン中</div>
+      <div><?php echo $user['name'] ?></div>
+      <div><?php echo $user['role'] ?? '権限未設定' ?></div>
+    </div>
   <?php endif ?>
-</div>
+    <div class="content-login">
+      <?php if(is_null($user)): ?>
+        <form name="execute" method="POST" action="AuthRouter.php" >
+          <h2><a href="javascript:document.execute.submit()">You can Login!</a></h2>
+          <input type="hidden" name="routerStatus" value="login">
+        </form>
+        <div class="header-subtitle">ログインのためにAuth0の認証に接続します</div>
+        <div class="header-subtitle">新規登録およびログインには2段階認証が必須です</div>
+      <?php else: ?>
+        <img src="/static/png/icon-auth0.png" width="30%">
+        <form name="execute" method="POST" action="AuthRouter.php" >
+          <h2><a href="javascript:document.execute.submit()">You can Logout!</a></h2>
+          <input type="hidden" name="routerStatus" value="logout">
+        </form>
+        <div class="header-subtitle">ログアウトのためにAuth0の認証に接続します</div>
+      <?php endif ?>
+    </div>
+  </div>
 </body>
 </html>
