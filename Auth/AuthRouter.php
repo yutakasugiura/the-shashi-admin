@@ -17,6 +17,8 @@ class AuthRouter
             $auth0->login();
         } elseif ($route === 'logout') {
             $auth0->logout();
+        } else {
+            header('Location: ' . 'http://localhost:3000/');
         }
     }
 }
